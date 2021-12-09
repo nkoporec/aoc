@@ -3,7 +3,18 @@ package days
 import (
 	"fmt"
 	"strconv"
+
+	"github.com/nkoporec/aoc/helpers"
 )
+
+
+func Day1(data []string) {
+	fmt.Println("Measurments increases", day1_count(data))
+}
+
+func Day1Second(data []string) {
+	fmt.Println("Three-measurement increases", day1_second_count(data))
+}
 
 func day1_count(data []string) int {
 	count := 0
@@ -32,8 +43,34 @@ func day1_count(data []string) int {
 	return count
 }
 
-func Day1(data []string) {
-	count := day1_count(data)
 
-	fmt.Println("Measurments increases", count)
+func day1_second_count(data []string) int {
+	var chunks [][]string
+	var count []string
+	var index int
+
+	for i := 0; index < len(data); i += 1 {
+		index = i + 3
+		chunks = append(chunks, data[i:index])
+	}
+
+	// Count the chunks sum values.
+	for _, chunk := range chunks {
+		sum := 0
+		chunk = helpers.RemoveEmptyItemsInSlice(chunk)
+		for _, line := range chunk {
+			number, err := strconv.Atoi(line)
+			if err != nil {
+				panic(err)
+			}
+
+			sum += number
+		}
+
+		count = append(count, strconv.Itoa(sum))
+	}
+
+	result := day1_count(count)
+
+	return result
 }

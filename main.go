@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/nkoporec/aoc/days"
+	"github.com/nkoporec/aoc/helpers"
 )
 
 func main() {
@@ -30,6 +31,7 @@ func executeDay(day int, data []string) {
 	switch day {
 	case 1:
 		days.Day1(data)
+		days.Day1Second(data)
 	}
 }
 
@@ -40,19 +42,8 @@ func getData(filepath string) []string {
 	}
 
 	records := strings.Split(string(content), "\n")
-	records = removeEmptyLines(records)
+	records = helpers.RemoveEmptyItemsInSlice(records)
 
 	return records
 }
 
-
-// Remove empty lines from the data
-func removeEmptyLines(data []string) []string {
-	var result []string
-	for _, line := range data {
-		if line != "" {
-			result = append(result, line)
-		}
-	}	
-	return result
-}
