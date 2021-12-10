@@ -19,3 +19,20 @@ func TestDay2_calculate(t *testing.T) {
 	}
 
 }
+
+func TestDay2_second_calculate(t *testing.T) {
+	data := []string{
+		"forward 5",
+		"down 5",
+		"forward 8",
+		"up 3",
+		"down 8",
+		"forward 2",
+	}
+	
+	result := day2_second_calculate(data)
+
+	if result != 900 {
+		t.Error("Expected 900, got", result)
+	}
+}

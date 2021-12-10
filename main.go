@@ -35,6 +35,7 @@ func executeDay(day int, data []string) {
 		break
 	case 2:
 		days.Day2(data)
+		days.Day2Second(data)
 	}
 }
 
